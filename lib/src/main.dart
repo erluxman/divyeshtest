@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
 import 'package:telehealth/src/di/dummy_module.dart';
-import 'package:telehealth/src/di/name_bloc.dart';
 import 'package:telehealth/src/di/injector/name_injector.dart';
+import 'package:telehealth/src/di/name_bloc.dart';
 
 void main() async {
   var container = await NameInjector.create(DummyModule());
@@ -11,9 +11,10 @@ void main() async {
 
 class App extends StatelessWidget {
   final AppName appName;
+  final HomePage homePage;
 
   @provide
-  const App(this.appName) : super();
+  const App(this.appName,this.homePage) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,17 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: homePage,
     );
   }
 }
 
 class HomePage extends StatelessWidget {
+  final NameBloc nameBloc;
+
+  @provide
+  HomePage(this.nameBloc);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +44,22 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'TeleHealth',
-            ),
+           StreamBuilder(
+             initialData: "Hello There",
+             stream: nameBloc.name,
+             builder: (context,snapshot){
+               return Text(snapshot.data);
+             },
+           ),
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), //
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.filter),
+        onPressed: () async{
+          await nameBloc.initWithMyName();
+        },
+      ),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

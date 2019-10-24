@@ -1,13 +1,14 @@
-
 import 'package:inject/inject.dart';
 import 'package:rxdart/rxdart.dart';
 
 class NameBloc extends BlocBase {
-  final AppName _name;
+  AppName _name;
   PublishSubject<String> _nameSubject;
 
   @provide
-  NameBloc(this._name);
+  NameBloc(this._name){
+    init();
+  }
 
   init() {
     _nameSubject = PublishSubject();
@@ -25,11 +26,12 @@ class NameBloc extends BlocBase {
   }
 }
 
-abstract class BlocBase{
+abstract class BlocBase {
   void dispose();
 }
 
-class AppName{
+class AppName {
   String name;
+
   AppName(this.name);
 }
