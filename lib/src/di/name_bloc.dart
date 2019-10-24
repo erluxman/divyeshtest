@@ -20,6 +20,9 @@ class NameBloc extends BlocBase {
   initWithMyName() async {
     _nameSubject.add("Laxman Bhattarai");
   }
+  showEmail() async{
+    _nameSubject.add("erluxman@gmail.com");
+  }
 
   @override
   dispose() {

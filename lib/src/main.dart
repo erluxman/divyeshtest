@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   final HomePage homePage;
 
   @provide
-  const App(this.appName,this.homePage) : super();
+  const App(this.appName, this.homePage) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -44,22 +44,27 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-           StreamBuilder(
-             initialData: "Hello There",
-             stream: nameBloc.name,
-             builder: (context,snapshot){
-               return Text(snapshot.data);
-             },
-           ),
+            StreamBuilder(
+              //initialData: "Hello There",
+              stream: nameBloc.name,
+              builder: (context, snapshot) {
+                return Text(snapshot.data ?? _getInitialName());
+              },
+            ),
           ],
         ),
       ), //
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.filter),
-        onPressed: () async{
-          await nameBloc.initWithMyName();
+        child: Icon(Icons.add),
+        onPressed: () async {
+          await nameBloc.showEmail();
         },
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  String _getInitialName(){
+    nameBloc.initWithMyName();
+    return "Hello there";
   }
 }
