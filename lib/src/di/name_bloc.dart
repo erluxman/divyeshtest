@@ -12,6 +12,7 @@ class NameBloc extends BlocBase {
 
   init() {
     _nameSubject = PublishSubject();
+    _nameSubject.add(_name.name);
   }
 
   Observable<String> get name => _nameSubject.stream;

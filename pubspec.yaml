@@ -26,6 +26,8 @@ dev_dependencies:
     git:
       url: https://github.com/google/inject.dart.git
       path: package/inject_generator
+flutter:
+  uses-material-design: true
 
 fonts:
   - family:  TelehealthIcons
