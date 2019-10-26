@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
+import 'package:telehealth/src/data/local/local_db_floor.dart';
 import 'package:telehealth/src/di/dummy_module.dart';
 import 'package:telehealth/src/di/injector/name_injector.dart';
 import 'package:telehealth/src/di/name_bloc.dart';
@@ -51,6 +52,16 @@ class HomePage extends StatelessWidget {
                 return Text(snapshot.data ?? _getInitialName());
               },
             ),
+            StreamBuilder(
+              //initialData: "Hello There",
+              stream: nameBloc.persons,
+              builder: (context, snapshot) {
+                var persons = snapshot.data as List<Person>;
+                var stringtoshow = "";
+                persons.forEach((person)=>stringtoshow+= "${person.id}  ${person.name}");
+                return Text(stringtoshow);
+              },
+            ),
           ],
         ),
       ), //
@@ -63,7 +74,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  String _getInitialName(){
+  String _getInitialName() {
     nameBloc.initWithMyName();
     return "Hello there";
   }
