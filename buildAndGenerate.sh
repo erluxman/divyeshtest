@@ -1,6 +1,7 @@
  flutter pub get
  flutter packages pub run build_runner build --delete-conflicting-outputs
  find . -name "*.inject.summary" -type f -delete
+ find . -name "*.g.inject.summary" -type f -delete
  injected=$(find . -name "*.inject.dart" -type f)
 
  for i in $injected; do
