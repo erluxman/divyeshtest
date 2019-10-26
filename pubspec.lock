@@ -14,7 +14,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.34.3"
+    version: "0.36.4"
   args:
     dependency: transitive
     description:
@@ -42,42 +42,42 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.0"
   build_config:
     dependency: transitive
     description:
       name: build_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.1+1"
   build_daemon:
     dependency: transitive
     description:
       name: build_daemon
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.3"
+    version: "2.1.0"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.3"
+    version: "1.2.1"
   build_runner:
     dependency: "direct dev"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.3"
+    version: "1.7.1"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "4.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -154,7 +154,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.3"
+    version: "1.2.9"
   dio:
     dependency: transitive
     description:
@@ -190,6 +190,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.0"
+  floor_generator:
+    dependency: "direct dev"
+    description:
+      name: floor_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -206,7 +213,7 @@ packages:
       name: front_end
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.9+1"
+    version: "0.1.19"
   glob:
     dependency: transitive
     description:
@@ -254,8 +261,8 @@ packages:
     description:
       path: "package/inject"
       ref: HEAD
-      resolved-ref: "4ffd3d339d8b776b2bec8d95ae6d3d168856e76c"
-      url: "https://github.com/google/inject.dart.git"
+      resolved-ref: "32f1057574ab2512b3b95af63daae9018558ba88"
+      url: "https://github.com/erluxman/inject.dart.git"
     source: git
     version: "1.0.0-alpha"
   inject_generator:
@@ -263,8 +270,8 @@ packages:
     description:
       path: "package/inject_generator"
       ref: HEAD
-      resolved-ref: "4ffd3d339d8b776b2bec8d95ae6d3d168856e76c"
-      url: "https://github.com/google/inject.dart.git"
+      resolved-ref: "32f1057574ab2512b3b95af63daae9018558ba88"
+      url: "https://github.com/erluxman/inject.dart.git"
     source: git
     version: "1.0.0-alpha"
   io:
@@ -294,7 +301,7 @@ packages:
       name: kernel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.9+1"
+    version: "0.3.19"
   logging:
     dependency: transitive
     description:
@@ -372,13 +379,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  plugin:
-    dependency: transitive
-    description:
-      name: plugin
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0+3"
   pool:
     dependency: transitive
     description:
@@ -414,6 +414,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  retrofit_generator:
+    dependency: "direct dev"
+    description:
+      name: retrofit_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1+2"
   rxdart:
     dependency: "direct main"
     description:
@@ -447,6 +454,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  source_gen:
+    dependency: transitive
+    description:
+      name: source_gen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.4+4"
   source_span:
     dependency: transitive
     description:
@@ -517,6 +531,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1+2"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   typed_data:
     dependency: transitive
     description:
