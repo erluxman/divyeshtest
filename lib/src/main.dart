@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
 import 'package:telehealth/src/data/local/local_db_floor.dart';
-import 'package:telehealth/src/di/dummy_module.dart';
 import 'package:telehealth/src/di/injector/name_injector.dart';
 import 'package:telehealth/src/di/name_bloc.dart';
 
 void main() async {
-  var container = await NameInjector.create(DummyModule());
+  var container = await NameInjector.create();
   runApp(container.app);
 }
 
@@ -57,8 +56,10 @@ class HomePage extends StatelessWidget {
               stream: nameBloc.persons,
               builder: (context, snapshot) {
                 var persons = snapshot.data as List<Person>;
+                if (persons == null) return Text("Loading data");
                 var stringtoshow = "";
-                persons.forEach((person)=>stringtoshow+= "${person.id}  ${person.name}");
+                persons.forEach(
+                    (person) => stringtoshow += "${person.id}  ${person.name}");
                 return Text(stringtoshow);
               },
             ),

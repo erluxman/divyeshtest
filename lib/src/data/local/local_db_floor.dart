@@ -35,21 +35,28 @@ abstract class AppDatabase extends FloorDatabase {
 
 class FloorTestDb {
   AppDatabase _appDatabase;
+  bool db_initialized = false;
 
   FloorTestDb() {
     _init();
   }
 
   _init() async {
-    }
+    _appDatabase =
+        await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+    db_initialized = true;
+  }
 
   insertNewPerson() async {
     var newPerson = Person(DateTime.now().millisecondsSinceEpoch,
         "New User at ${DateTime.now().toIso8601String()}");
-    await _appDatabase.personDao.insertPerson(newPerson);
+    if (db_initialized) await _appDatabase.personDao.insertPerson(newPerson);
   }
 
-  Stream<List<Person>> getPersonList()  {
-    return _appDatabase.personDao.findAllPersons();
+  Stream<List<Person>> getPersonList() {
+    if (db_initialized)
+      return _appDatabase.personDao.findAllPersons();
+    else
+      return Stream.empty();
   }
 }

@@ -3,6 +3,9 @@ import '../dummy_module.dart' as _i2;
 import '../name_bloc.dart' as _i3;
 import '../../main.dart' as _i4;
 import 'dart:async' as _i5;
+import '../modules/data_module.dart' as _i6;
+import '../modules/bloc_module.dart' as _i7;
+import '../modules/widget_module.dart' as _i8;
 
 class NameInjector$Injector implements _i1.NameInjector {
   NameInjector$Injector._(this._dummyModule);
@@ -13,8 +16,8 @@ class NameInjector$Injector implements _i1.NameInjector {
 
   _i4.HomePage _singletonHomePage;
 
-  static _i5.Future<_i1.NameInjector> create(
-      _i2.DummyModule dummyModule) async {
+  static _i5.Future<_i1.NameInjector> create(_i2.DummyModule dummyModule,
+      _i6.DataModule _, _i7.BlocModule __, _i8.WidgetModule ___) async {
     final injector = NameInjector$Injector._(dummyModule);
 
     return injector;
