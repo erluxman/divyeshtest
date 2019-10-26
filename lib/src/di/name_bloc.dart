@@ -1,5 +1,6 @@
 import 'package:inject/inject.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:telehealth/src/data/remote/remote_db_chopper.dart';
 
 class NameBloc extends BlocBase {
   AppName _name;
@@ -22,6 +23,8 @@ class NameBloc extends BlocBase {
   }
   showEmail() async{
     _nameSubject.add("erluxman@gmail.com");
+    final apiTest = ChopperAPITest();
+    apiTest.testChopper();
   }
 
   @override
