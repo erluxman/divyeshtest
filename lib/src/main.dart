@@ -41,8 +41,8 @@ class HomePage extends StatelessWidget {
         title: Text("TeleHealth"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             StreamBuilder(
               //initialData: "Hello There",
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                 if (persons == null) return Text("Loading data");
                 var stringtoshow = "";
                 persons.forEach(
-                    (person) => stringtoshow += "${person.id}  ${person.name}");
+                    (person) => stringtoshow += "\n${person.id}  ${person.name}");
                 return Text(stringtoshow);
               },
             ),
