@@ -1,5 +1,6 @@
 
-import 'package:telehealth/src/common/account/data/model/user_model.dart';
+
+import 'package:telehealth/src/common/data/model/user_model.dart';
 
 abstract class AccountUseCase{
 

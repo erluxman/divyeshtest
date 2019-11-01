@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telehealth/src/common/account/business/usecases/account_usecases.dart';
-import 'package:telehealth/src/common/account/data/model/user_model.dart';
+import 'package:telehealth/src/common/data/model/user_model.dart';
+import 'package:telehealth/src/common/features/account/business/usecases/account_usecases.dart';
 
 class AccountProvider with ChangeNotifier {
   AccountUseCases _accountUseCases;

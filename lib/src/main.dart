@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
-import 'package:telehealth/src/data/local/local_db_floor.dart';
-import 'package:telehealth/src/di/injector/name_injector.dart';
-import 'package:telehealth/src/di/name_bloc.dart';
+
+import 'common/data/local/local_db_floor.dart';
+import 'common/di/injector/name_injector.dart';
+import 'common/di/name_bloc.dart';
 
 void main() async {
   var container = await NameInjector.create();
@@ -58,8 +59,8 @@ class HomePage extends StatelessWidget {
                 var persons = snapshot.data as List<Person>;
                 if (persons == null) return Text("Loading data");
                 var stringtoshow = "";
-                persons.forEach(
-                    (person) => stringtoshow += "\n${person.id}  ${person.name}");
+                persons.forEach((person) =>
+                    stringtoshow += "\n${person.id}  ${person.name}");
                 return Text(stringtoshow);
               },
             ),

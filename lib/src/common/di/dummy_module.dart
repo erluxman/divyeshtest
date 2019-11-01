@@ -1,11 +1,10 @@
-
 import 'package:inject/inject.dart';
-import 'package:telehealth/src/di/name_bloc.dart';
 import 'package:telehealth/src/main.dart';
 
-@module
-class DummyModule{
+import 'name_bloc.dart';
 
+@module
+class DummyModule {
   @provide
   @singleton
   AppName provideMyName() => AppName("Telehealth");
@@ -14,9 +13,7 @@ class DummyModule{
   @singleton
   HomePage provideHomePage(NameBloc nameBloc) => HomePage(nameBloc);
 
-
   @provide
   @singleton
   BlocBase provideNameBloc(AppName name) => NameBloc(name);
-
 }
