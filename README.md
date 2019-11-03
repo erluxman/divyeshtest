@@ -34,3 +34,5 @@
 # Architecture Setup
 
 [Architecture](art/architecture.png)
+![alt text](./art/architecture.png)
+
