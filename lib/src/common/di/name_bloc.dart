@@ -1,7 +1,7 @@
 import 'package:inject/inject.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:telehealth/src/common/data/local/local_db_floor.dart';
-import 'package:telehealth/src/common/data/remote/remote_db_chopper.dart';
+import 'package:telehealth/src/common/features/foobar/data/local/local_db_floor.dart';
+import 'package:telehealth/src/common/features/foobar/data/remote/remote_db_chopper.dart';
 
 class NameBloc extends BlocBase {
   AppName _name;

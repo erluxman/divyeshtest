@@ -1,42 +1,28 @@
+import 'package:telehealth/src/common/features/foobar/data/model/user_model.dart';
 
+abstract class AccountUseCase {}
 
-import 'package:telehealth/src/common/data/model/user_model.dart';
+class SignIn extends AccountUseCase {}
 
-abstract class AccountUseCase{
+class UpdateAccount extends AccountUseCase {
+  updateFullName(String fullName) {}
 
+  updateUserName(String userName) {}
 }
 
-class SignIn extends AccountUseCase{
+class ResetPassword extends AccountUseCase {}
 
+class FetchAccountInfo extends AccountUseCase {
+  Stream<Account> getAccount() async* {}
 }
 
-class UpdateAccount extends AccountUseCase{
-  updateFullName(String fullName){
-
-  }
-
-  updateUserName(String userName){
-
-  }
-}
-
-class ResetPassword extends AccountUseCase{
-
-}
-
-class FetchAccountInfo extends AccountUseCase{
-  Stream<Account> getAccount() async *{
-
-  }
-}
-
-class AccountUseCases{
+class AccountUseCases {
   SignIn signIn;
   ResetPassword resetPassword;
   FetchAccountInfo fetchAccountInfo;
   UpdateAccount updateAccount;
 
-  updateFullName(String fullName){
+  updateFullName(String fullName) {
     updateAccount.updateFullName(fullName);
   }
 }

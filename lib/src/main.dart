@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
 
-import 'common/data/local/local_db_floor.dart';
 import 'common/di/injector/name_injector.dart';
 import 'common/di/name_bloc.dart';
+import 'common/features/foobar/data/local/local_db_floor.dart';
 
 void main() async {
   var container = await NameInjector.create();
