@@ -6,6 +6,7 @@ import 'package:telehealth/src/common/features/patientlist/data/patient_list_dat
 class MockPatientListRemoteDataSource implements RemotePatientListDataSource {
   @override
   Future<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) async {
+    await Future.delayed(Duration(seconds: 2));
     return dummyPatients;
   }
 }

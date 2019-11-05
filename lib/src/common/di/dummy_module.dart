@@ -12,9 +12,5 @@ class DummyModule {
 
   @provide
   @singleton
-  HomePage provideHomePage(PatientListBloc bloc) => HomePage(bloc);
-
-  @provide
-  @singleton
   BlocBase provideNameBloc(AppName name) => NameBloc(name);
 }

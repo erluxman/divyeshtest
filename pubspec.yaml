@@ -43,6 +43,7 @@ dependencies:
 
   # Architecture Components
   rxdart: ^0.18.0
+  provider: ^3.1.0+1
   inject:
     git:
       url: https://github.com/erluxman/inject.dart.git
