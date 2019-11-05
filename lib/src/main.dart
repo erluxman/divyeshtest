@@ -20,7 +20,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<PatientListBloc>.value(
-      value:patientsBloc,
+      value: patientsBloc,
       child: MaterialApp(
         title: "Tele health",
         theme: ThemeData(
@@ -65,16 +65,24 @@ class DashboardWidget extends StatelessWidget {
               children: patients.map((patient) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(patient.name),
-                      Text(patient.age.toString()),
-                    ],
+              child: Material(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DashboardWidget()));
+                  },
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 32),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(patient.name),
+                          Text(patient.age.toString()),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
