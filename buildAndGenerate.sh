@@ -6,12 +6,12 @@
  injected=$(find . -name "*.inject.dart" -type f)
 
  for i in $injected; do
-    if [ "$i" == "./lib/src/di/injector/name_injector.inject.dart" ]
+    if [ "$i" == "./lib/src/common/di/injector/name_injector.inject.dart" ]
     then
-        echo "./lib/src/di/injector/bloc_injector.inject.dart == $i"
+        echo "./lib/src/common/di/injector/name_injector.inject.dart == $i"
         echo "Saving the injector file"
     else
-        echo "./lib/src/di/injector/bloc_injector.inject.dart != $i"
+        echo "./lib/src/common/di/injector/name_injector.inject.dart != $i"
     rm -rf "$i"
     # echo "deleted :$i"
     fi

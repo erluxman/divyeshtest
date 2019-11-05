@@ -2,12 +2,19 @@ import 'package:inject/inject.dart';
 import 'package:telehealth/src/common/di/modules/bloc_module.dart';
 import 'package:telehealth/src/common/di/modules/data_module.dart';
 import 'package:telehealth/src/common/di/modules/widget_module.dart';
+import 'package:telehealth/src/common/features/patientlist/di/patient_list_module.dart';
 
 import '../../../main.dart';
 import '../dummy_module.dart';
 import 'name_injector.inject.dart' as g;
 
-@Injector(const [DummyModule, DataModule, BlocModule, WidgetModule])
+@Injector(const [
+  DummyModule,
+  DataModule,
+  BlocModule,
+  WidgetModule,
+  PatientListModule
+])
 abstract class NameInjector {
   @provide
   App get app;
@@ -17,5 +24,6 @@ abstract class NameInjector {
         DataModule(),
         BlocModule(),
         WidgetModule(),
+        PatientListModule(),
       );
 }
