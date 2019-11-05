@@ -35,14 +35,14 @@ class PatientListModule {
   @provide
   @singleton
   LocalPatientListDataSource provideLocalDataSource() =>
-      currentGlobalState == GlobalState.MOCK
+      currentGlobalState == AppBuildConfig.MOCK
           ? MockPatientListLocalDataSource()
           : PatientListLocalDataSource();
 
   @provide
   @singleton
   RemotePatientListDataSource provideRemoteDataSource() =>
-      currentGlobalState == GlobalState.MOCK
+      currentGlobalState == AppBuildConfig.MOCK
           ? MockPatientListRemoteDataSource()
           : PatientListLocalDataSource();
 }

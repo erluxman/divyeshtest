@@ -6,11 +6,7 @@ import '../../features/patientlist/bloc/usecases/patient_list_usecases.dart'
     as _i5;
 import '../../features/patientlist/bloc/state/patient_list_bloc.dart' as _i6;
 import 'dart:async' as _i7;
-import '../dummy_module.dart' as _i8;
-import '../modules/data_module.dart' as _i9;
-import '../modules/bloc_module.dart' as _i10;
-import '../modules/widget_module.dart' as _i11;
-import '../../../main.dart' as _i12;
+import '../../../main.dart' as _i8;
 
 class NameInjector$Injector implements _i1.NameInjector {
   NameInjector$Injector._(this._patientListModule);
@@ -28,17 +24,13 @@ class NameInjector$Injector implements _i1.NameInjector {
   _i6.PatientListBloc _singletonPatientListBloc;
 
   static _i7.Future<_i1.NameInjector> create(
-      _i8.DummyModule _,
-      _i9.DataModule __,
-      _i10.BlocModule ___,
-      _i11.WidgetModule ____,
       _i2.PatientListModule patientListModule) async {
     final injector = NameInjector$Injector._(patientListModule);
 
     return injector;
   }
 
-  _i12.App _createApp() => _i12.App(_createPatientListBloc());
+  _i8.App _createApp() => _i8.App(_createPatientListBloc());
   _i6.PatientListBloc _createPatientListBloc() => _singletonPatientListBloc ??=
       _patientListModule.provideBloc(_createPatientListUseCases());
   _i5.PatientListUseCases _createPatientListUseCases() => _patientListModule
@@ -57,5 +49,5 @@ class NameInjector$Injector implements _i1.NameInjector {
       _singletonRemotePatientListDataSource ??=
           _patientListModule.provideRemoteDataSource();
   @override
-  _i12.App get app => _createApp();
+  _i8.App get app => _createApp();
 }

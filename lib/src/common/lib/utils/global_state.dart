@@ -1,6 +1,6 @@
 
-enum GlobalState{
+enum AppBuildConfig{
   MOCK,STAGING,PROD
 }
 
-GlobalState currentGlobalState = GlobalState.MOCK;
+AppBuildConfig currentGlobalState = AppBuildConfig.MOCK;
