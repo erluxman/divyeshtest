@@ -1,16 +1,21 @@
 import 'package:inject/inject.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:telehealth/src/common/features/patientlist/bloc/usecases/patient_list_usecases.dart';
 import 'package:telehealth/src/common/features/patientlist/data/patient_basic_info.dart';
 
-class PatientListBloc{
+class PatientListBloc {
   final PatientListUseCases useCases;
 
+  PublishSubject<List<PatientBasicInfo>> _patientsList = PublishSubject();
+
+  Observable<List<PatientBasicInfo>> get patients => _patientsList.stream;
 
   @provide
-  const PatientListBloc(this.useCases);
+  PatientListBloc(this.useCases);
 
-  Stream<List<PatientBasicInfo>> getPatientList() async*{
-    List<PatientBasicInfo> patients = await useCases.fetchPatientListUseCase.fetchPatients(1,50);
-   yield patients;
+  fetchPatients() {
+    useCases.fetchPatientListUseCase.fetchPatients(1, 50).then((value) {
+      _patientsList.add(value);
+    });
   }
 }

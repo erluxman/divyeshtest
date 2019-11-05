@@ -1,4 +1,5 @@
 import 'package:inject/inject.dart';
+import 'package:telehealth/src/common/features/patientlist/bloc/state/patient_list_bloc.dart';
 import 'package:telehealth/src/main.dart';
 
 import 'name_bloc.dart';
@@ -11,7 +12,7 @@ class DummyModule {
 
   @provide
   @singleton
-  HomePage provideHomePage(NameBloc nameBloc) => HomePage(nameBloc);
+  HomePage provideHomePage(PatientListBloc bloc) => HomePage(bloc);
 
   @provide
   @singleton

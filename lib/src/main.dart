@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
+import 'package:telehealth/src/common/features/patientlist/bloc/state/patient_list_bloc.dart';
+import 'package:telehealth/src/common/features/patientlist/data/patient_basic_info.dart';
 
 import 'common/di/injector/name_injector.dart';
 import 'common/di/name_bloc.dart';
-import 'common/features/foobar/data/local/local_db_floor.dart';
 
 void main() async {
   var container = await NameInjector.create();
@@ -29,11 +30,22 @@ class App extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  final NameBloc nameBloc;
+class HomePage extends StatefulWidget {
+  final PatientListBloc bloc;
 
   @provide
-  HomePage(this.nameBloc);
+  HomePage(this.bloc);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.bloc.fetchPatients();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,42 +54,24 @@ class HomePage extends StatelessWidget {
         title: Text("TeleHealth"),
       ),
       body: Center(
-        child: ListView(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            StreamBuilder(
-              //initialData: "Hello There",
-              stream: nameBloc.name,
-              builder: (context, snapshot) {
-                return Text(snapshot.data ?? _getInitialName());
-              },
-            ),
-            StreamBuilder(
-              //initialData: "Hello There",
-              stream: nameBloc.persons,
-              builder: (context, snapshot) {
-                var persons = snapshot.data as List<Person>;
-                if (persons == null) return Text("Loading data");
-                var stringtoshow = "";
-                persons.forEach((person) =>
-                    stringtoshow += "\n${person.id}  ${person.name}");
-                return Text(stringtoshow);
-              },
-            ),
-          ],
+        child: StreamBuilder(
+          //initialData: "Hello There",
+          stream: widget.bloc.patients,
+          builder: (context, snapshot) {
+            List<PatientBasicInfo> patients =
+                snapshot.data ?? _getInitialName();
+            print(patients);
+            return ListView(
+                children: patients.map((patient) {
+              return Text(patient.name);
+            }).toList());
+          },
         ),
       ), //
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async {
-          await nameBloc.showEmail();
-        },
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  String _getInitialName() {
-    nameBloc.initWithMyName();
-    return "Hello there";
+  List<PatientBasicInfo> _getInitialName() {
+    return List();
   }
 }

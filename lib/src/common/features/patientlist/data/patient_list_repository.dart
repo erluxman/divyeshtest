@@ -10,6 +10,6 @@ class PatientListRepository {
   const PatientListRepository(this.localDataSource, this.remoteDataSource);
 
   Future<List<PatientBasicInfo>> fetchPatients(int page,int pageSize) {
-    remoteDataSource.getAllPatients(page, pageSize);
+    return remoteDataSource.getAllPatients(page, pageSize);
   }
 }
