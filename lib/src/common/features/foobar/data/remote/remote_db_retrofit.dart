@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:telehealth/src/common/features/foobar/data/model/task.dart';
 
 part 'remote_db_retrofit.g.dart';
 
@@ -10,20 +10,6 @@ abstract class RestClient {
 
   @GET("/tasks")
   Future<List<Task>> getTasks();
-}
-
-@JsonSerializable()
-class Task {
-  String id;
-  String name;
-  String avatar;
-  String createdAt;
-
-  Task({this.id, this.name, this.avatar, this.createdAt});
-
-  factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TaskToJson(this);
 }
 
 void main(List<String> args) {

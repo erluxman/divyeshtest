@@ -3,18 +3,9 @@ import 'dart:async';
 import 'package:floor/floor.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
+import 'package:telehealth/src/common/features/foobar/data/model/person.dart';
 
 part 'local_db_floor.g.dart';
-
-@entity
-class Person {
-  @primaryKey
-  final int id;
-
-  final String name;
-
-  Person(this.id, this.name);
-}
 
 @dao
 abstract class PersonDao {
