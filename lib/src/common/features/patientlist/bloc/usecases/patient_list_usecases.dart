@@ -5,9 +5,12 @@ import 'package:telehealth/src/common/features/patientlist/data/patient_list_rep
 class PatientListUseCases {
   final FetchPatientListUseCase fetchPatientListUseCase;
 
+  final AddPatientUseCase addPatientUseCase;
+
   @provide
   const PatientListUseCases(
     this.fetchPatientListUseCase,
+    this.addPatientUseCase,
   );
 }
 
@@ -17,7 +20,18 @@ class FetchPatientListUseCase {
   @provide
   const FetchPatientListUseCase(this.repository);
 
-  Future<List<PatientBasicInfo>> fetchPatients(int page, int pageSize) {
+  Stream<List<PatientBasicInfo>> fetchPatients(int page, int pageSize) {
     return repository.fetchPatients(page, pageSize);
+  }
+}
+
+class AddPatientUseCase {
+  final PatientListRepository repository;
+
+  @provide
+  const AddPatientUseCase(this.repository);
+
+  addPatient(PatientBasicInfo patient) {
+    return repository.addPatient(patient);
   }
 }

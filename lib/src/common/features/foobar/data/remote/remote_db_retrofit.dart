@@ -19,7 +19,6 @@ void main(List<String> args) {
   dio.options.headers["Content-Type"] = "application/json";
   final client = RestClient(dio);
 
-  //client.getTasks().then((it) => logger.i(it));
   client.getTasks().then((tasks) {
     tasks.forEach((task) {
       print(task.name);

@@ -4,7 +4,8 @@ import '../../features/patientlist/data/patient_list_datasource.dart' as _i3;
 import '../../features/patientlist/data/patient_list_repository.dart' as _i4;
 import '../../features/patientlist/bloc/usecases/patient_list_usecases.dart'
     as _i5;
-import '../../features/patientlist/bloc/state/patient_list_bloc.dart' as _i6;
+import '../../features/patientlist/bloc/state/patient_list_ui_model.dart'
+    as _i6;
 import 'dart:async' as _i7;
 import '../../../main.dart' as _i8;
 
@@ -21,7 +22,9 @@ class NameInjector$Injector implements _i1.NameInjector {
 
   _i5.FetchPatientListUseCase _singletonFetchPatientListUseCase;
 
-  _i6.PatientListBloc _singletonPatientListBloc;
+  _i5.AddPatientUseCase _singletonAddPatientUseCase;
+
+  _i6.PatientListUIModel _singletonPatientListUIModel;
 
   static _i7.Future<_i1.NameInjector> create(
       _i2.PatientListModule patientListModule) async {
@@ -30,11 +33,13 @@ class NameInjector$Injector implements _i1.NameInjector {
     return injector;
   }
 
-  _i8.App _createApp() => _i8.App(_createPatientListBloc());
-  _i6.PatientListBloc _createPatientListBloc() => _singletonPatientListBloc ??=
-      _patientListModule.provideBloc(_createPatientListUseCases());
-  _i5.PatientListUseCases _createPatientListUseCases() => _patientListModule
-      .providePatientListUseCases(_createFetchPatientListUseCase());
+  _i8.App _createApp() => _i8.App(_createPatientListUIModel());
+  _i6.PatientListUIModel _createPatientListUIModel() =>
+      _singletonPatientListUIModel ??=
+          _patientListModule.provideBloc(_createPatientListUseCases());
+  _i5.PatientListUseCases _createPatientListUseCases() =>
+      _patientListModule.providePatientListUseCases(
+          _createFetchPatientListUseCase(), _createAddPatientUseCase());
   _i5.FetchPatientListUseCase _createFetchPatientListUseCase() =>
       _singletonFetchPatientListUseCase ??= _patientListModule
           .provideFetchPatientListUseCase(_createPatientListRepository());
@@ -48,6 +53,9 @@ class NameInjector$Injector implements _i1.NameInjector {
   _i3.RemotePatientListDataSource _createRemotePatientListDataSource() =>
       _singletonRemotePatientListDataSource ??=
           _patientListModule.provideRemoteDataSource();
+  _i5.AddPatientUseCase _createAddPatientUseCase() =>
+      _singletonAddPatientUseCase ??= _patientListModule
+          .provideAddPatientUseCase(_createPatientListRepository());
   @override
   _i8.App get app => _createApp();
 }

@@ -1,13 +1,29 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
 import 'package:telehealth/src/common/features/patientlist/data/patient_basic_info.dart';
 import 'package:telehealth/src/common/features/patientlist/data/patient_list_datasource.dart';
 
 class MockPatientListRemoteDataSource implements RemotePatientListDataSource {
+
+  BehaviorSubject<List<PatientBasicInfo>> _patients = BehaviorSubject();
+
   @override
-  Future<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) async {
-    await Future.delayed(Duration(seconds: 2));
-    return dummyPatients;
+  Stream<List<PatientBasicInfo>> getAllPatients(int page, int pageSize)  {
+    addPatientsToStream();
+    return _patients;
+  }
+
+  addPatientsToStream() async{
+    await Future.delayed(Duration(seconds: 1));
+    _patients.add(dummyPatients);
+  }
+
+  @override
+  addPatient(PatientBasicInfo patient) {
+    print("add patient ${patient.name}");
+    dummyPatients.add(patient);
+    addPatientsToStream();
   }
 }
 

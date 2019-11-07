@@ -9,7 +9,11 @@ class PatientListRepository {
   @provide
   const PatientListRepository(this.localDataSource, this.remoteDataSource);
 
-  Future<List<PatientBasicInfo>> fetchPatients(int page,int pageSize) {
+  Stream<List<PatientBasicInfo>> fetchPatients(int page, int pageSize) {
     return remoteDataSource.getAllPatients(page, pageSize);
+  }
+
+  addPatient(PatientBasicInfo patient) {
+    remoteDataSource.addPatient(patient);
   }
 }

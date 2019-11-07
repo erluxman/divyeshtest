@@ -3,7 +3,13 @@ import 'package:telehealth/src/common/features/patientlist/data/patient_list_dat
 
 class PatientListRemoteDataSourceChopper extends RemotePatientListDataSource{
   @override
-  Future<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) {
+  Stream<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) {
+    return null;
+  }
+
+  @override
+  addPatient(PatientBasicInfo patient) {
+    // TODO: implement addPatient
     return null;
   }
 

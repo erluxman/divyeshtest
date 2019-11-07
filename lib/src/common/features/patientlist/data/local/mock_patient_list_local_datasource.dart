@@ -4,8 +4,14 @@ import 'package:telehealth/src/common/features/patientlist/data/patient_list_dat
 class MockPatientListLocalDataSource  implements LocalPatientListDataSource{
 
   @override
-  Future<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) {
+  Stream<List<PatientBasicInfo>> getAllPatients(int page, int pageSize) {
     // TODO: implement getAllPatients
+    return null;
+  }
+
+  @override
+  addPatient(PatientBasicInfo patient) {
+    // TODO: implement addPatient
     return null;
   }
 
