@@ -13,10 +13,12 @@ class PatientListWidget extends StatelessWidget {
       ),
       body: DashboardWidget(), //
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          bloc.addPatient(PatientBasicInfo(name:"foo "+(DateTime.now().millisecondsSinceEpoch%100).toString(),age: (DateTime.now().millisecondsSinceEpoch%50)));
+        onPressed: () {
+          bloc.addPatient(PatientBasicInfo(
+              name: "foo " +
+                  (DateTime.now().millisecondsSinceEpoch % 100).toString(),
+              age: (DateTime.now().millisecondsSinceEpoch % 50)));
         },
-
         child: Icon(Icons.add),
       ),
     );
@@ -42,34 +44,43 @@ class DashboardWidget extends StatelessWidget {
           if (patients.isEmpty) return CircularProgressIndicator();
           return ListView(
               children: patients.map((patient) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Material(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => DashboardWidget()));
-                      },
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 32),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(patient.name),
-                              Text(patient.age.toString()),
-                            ],
-                          ),
-                        ),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Material(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DashboardWidget()));
+                  },
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 32),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(patient.name),
+                          Text(patient.age.toString()),
+                          Icon(
+                            (patient.isSynced != null)
+                                ? (patient.isSynced
+                                    ? Icons.check_circle
+                                    : Icons.cancel)
+                                : Icons.sync,
+                            color: (patient.isSynced != null)
+                                ? (patient.isSynced ? Colors.green : Colors.red)
+                                : Colors.grey,
+                          )
+                        ],
                       ),
                     ),
                   ),
-                );
-              }).toList());
+                ),
+              ),
+            );
+          }).toList());
         },
       ),
     );
   }
 }
-

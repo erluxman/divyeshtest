@@ -10,10 +10,15 @@ class PatientListRepository {
   const PatientListRepository(this.localDataSource, this.remoteDataSource);
 
   Stream<List<PatientBasicInfo>> fetchPatients(int page, int pageSize) {
-    return remoteDataSource.getAllPatients(page, pageSize);
+    return localDataSource.getAllPatients(page, pageSize);
   }
 
   addPatient(PatientBasicInfo patient) {
-    remoteDataSource.addPatient(patient);
+    localDataSource.addPatient(patient);
+    remoteDataSource.addPatient(patient, () {
+      localDataSource.addPatient(patient.copyWith(isSynced: true));
+    }, () {
+      localDataSource.addPatient(patient.copyWith(isSynced: false));
+    });
   }
 }

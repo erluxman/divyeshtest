@@ -16,18 +16,19 @@ class MockPatientListRemoteDataSource implements RemotePatientListDataSource {
 
   addPatientsToStream() async{
     await Future.delayed(Duration(seconds: 1));
-    _patients.add(dummyPatients);
+    _patients.add(_dummyPatients);
   }
 
   @override
-  addPatient(PatientBasicInfo patient) {
+  addPatient(PatientBasicInfo patient, Function onSuccess, Function onFailure) {
     print("add patient ${patient.name}");
-    dummyPatients.add(patient);
+    _dummyPatients.add(patient);
     addPatientsToStream();
+    onSuccess();
   }
 }
 
-List<PatientBasicInfo> dummyPatients = [
+List<PatientBasicInfo> _dummyPatients = [
   PatientBasicInfo(name: "Laxman Bhattarai", age: 26),
   PatientBasicInfo(name: "Madhu Reddy", age: 40),
   PatientBasicInfo(name: "Er Divyesh", age: 28),

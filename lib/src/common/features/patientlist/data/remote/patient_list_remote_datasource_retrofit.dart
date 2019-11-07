@@ -8,7 +8,7 @@ class PatientListRemoteDataSourceRefrofit implements RemotePatientListDataSource
   }
 
   @override
-  addPatient(PatientBasicInfo patient) {
+  addPatient(PatientBasicInfo patient, Function onSuccess, Function onFailure) {
     // TODO: implement addPatient
     return null;
   }
