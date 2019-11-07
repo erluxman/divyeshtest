@@ -3,6 +3,7 @@ import 'package:telehealth/src/common/features/patientlist/data/patient_basic_in
 import 'package:telehealth/src/common/features/patientlist/data/patient_list_datasource.dart';
 
 class MockPatientListLocalDataSource implements LocalPatientListDataSource {
+
   BehaviorSubject<List<PatientBasicInfo>> _patients = BehaviorSubject();
 
   @override
@@ -47,3 +48,4 @@ List<PatientBasicInfo> _dummyPatients = [
   PatientBasicInfo(isSynced: true, name: "Napoleon Hill", age: 58),
   PatientBasicInfo(isSynced: true, name: "Andrew Carnegie", age: 76),
 ];
+

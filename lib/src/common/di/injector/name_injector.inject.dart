@@ -7,7 +7,7 @@ import '../../features/patientlist/bloc/usecases/patient_list_usecases.dart'
 import '../../features/patientlist/bloc/state/patient_list_ui_model.dart'
     as _i6;
 import 'dart:async' as _i7;
-import '../../../main.dart' as _i8;
+import '../../../../main.dart' as _i8;
 
 class NameInjector$Injector implements _i1.NameInjector {
   NameInjector$Injector._(this._patientListModule);
