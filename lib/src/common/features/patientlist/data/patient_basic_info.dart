@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class PatientBasicInfo {
   String id;
 
@@ -12,7 +14,10 @@ class PatientBasicInfo {
     this.name,
     this.age,
     this.isSynced,
-  });
+  }) {
+    this.id = DateTime.now().toIso8601String() +
+        Random().nextInt(10000000).toString();
+  }
 
   @override
   bool operator ==(Object other) =>

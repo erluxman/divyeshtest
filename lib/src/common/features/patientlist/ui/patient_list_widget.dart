@@ -40,7 +40,6 @@ class DashboardWidget extends StatelessWidget {
         stream: bloc.patients,
         builder: (context, snapshot) {
           List<PatientBasicInfo> patients = snapshot.data ?? _getInitialName();
-          print(patients);
           if (patients.isEmpty) return CircularProgressIndicator();
           return ListView(
               children: patients.map((patient) {

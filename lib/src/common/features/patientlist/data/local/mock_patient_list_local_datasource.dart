@@ -19,14 +19,15 @@ class MockPatientListLocalDataSource implements LocalPatientListDataSource {
   @override
   addPatient(PatientBasicInfo patient) {
     print("add patient ${patient.name}");
+    var isUnique = true;
     for (int i = 0; i < _dummyPatients.length; i++) {
-      if(_dummyPatients[i].id==patient.id){
+      if (_dummyPatients[i].name == patient.name) {
+        print(_dummyPatients[i].name + "to " + patient.name);
         _dummyPatients[i] = patient;
-        addPatientsToStream();
-        break;
+        isUnique = false;
       }
     }
-    _dummyPatients.add(patient);
+    if (isUnique) _dummyPatients.add(patient);
     addPatientsToStream();
   }
 }

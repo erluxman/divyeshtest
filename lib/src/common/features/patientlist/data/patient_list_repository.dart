@@ -15,9 +15,11 @@ class PatientListRepository {
 
   addPatient(PatientBasicInfo patient) {
     localDataSource.addPatient(patient);
-    remoteDataSource.addPatient(patient, () {
+    remoteDataSource.addPatient(patient, () async {
+      await Future.delayed(Duration(seconds: 4));
       localDataSource.addPatient(patient.copyWith(isSynced: true));
-    }, () {
+    }, () async {
+      await Future.delayed(Duration(seconds: 4));
       localDataSource.addPatient(patient.copyWith(isSynced: false));
     });
   }
